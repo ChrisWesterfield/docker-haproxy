@@ -6,6 +6,7 @@ RUN apt-get update \
 		liblua5.3-0 \
 		libpcre3 \
 		libssl1.0.0 \
+        mysql-client \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV HAPROXY_MAJOR 1.7
@@ -45,7 +46,6 @@ RUN set -x \
 	&& mkdir -p /usr/local/etc/haproxy \
 	&& cp -R /usr/src/haproxy/examples/errorfiles /usr/local/etc/haproxy/errors \
 	&& rm -rf /usr/src/haproxy \
-	&& apt-get install mysql-client \
 	\
 	&& apt-get purge -y --auto-remove $buildDeps
 
